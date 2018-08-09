@@ -17,7 +17,7 @@ class CashRegister
     @items += array.
     @prices << price * quantities
     @quantities << quantity
-    
+    @last_total = @total
     @total += price * quantity
   end
 
