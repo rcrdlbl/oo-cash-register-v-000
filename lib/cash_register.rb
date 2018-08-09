@@ -15,7 +15,6 @@ class CashRegister
 
   def add_item(name, price, quantity = 1)
     @items += Array.new(quantity) {name}
-    @quantities << quantity
     @last_total = @total
     @total += price * quantity
   end
