@@ -15,7 +15,7 @@ class CashRegister
 
   def add_item(name, price, quantity = 1)
     @items << name
-    @prices << price
+    @prices << price * quantities
     @quantities << quantity
     @total += price * quantity
   end
@@ -26,13 +26,6 @@ class CashRegister
     else
       @total = @total.to_f - ((@discount.to_f * 0.01) * @total.to_f)
       return "After the discount, the total comes to $#{@total.to_i}."
-    end
-  end
-
-  def items
-    item_list = []
-    @items.each_with_index do |item, i|
-      item_list += Array.new(@quantities[i]) { @items[i]}
     end
   end
 
