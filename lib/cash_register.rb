@@ -1,5 +1,5 @@
 class CashRegister
-  attr_accessor :items, :prices, :total, :discount, :quantities
+  attr_accessor :items, :prices, :total, :discount, :quantities, :last_total
 
   def initialize(discount = 0)
     @total = 0
@@ -14,9 +14,8 @@ class CashRegister
   end
 
   def add_item(name, price, quantity = 1)
-    @items << name
-    @prices << price
-    @quantities << quantity
+    @items += Array.new(quantity) {name}
+    @last_total = @total
     @total += price * quantity
   end
 
@@ -29,12 +28,8 @@ class CashRegister
     end
   end
 
-  def items
-    item_list = []
-    @items.each_with_index do |item, i|
-      item_list += Array.new(@quantities[i]) {item}
-    end
+  def void_last_transaction
+    @total = @last_total
   end
-
 
 end
