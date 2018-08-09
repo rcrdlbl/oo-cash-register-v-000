@@ -32,7 +32,7 @@ class CashRegister
   def items
     item_list = []
     @items.each_with_index do |item, i|
-      item_list += Array.new(@quantities[i]) {item}
+      item_list += Array.new(@quantities[i]) { @items[i]}
     end
   end
 
